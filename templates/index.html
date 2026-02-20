@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FlaskAuthApp</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-left">
+        <a href="/">AuthApp</a>
+        <a href="/">Home</a>
+    </div>
+
+    <div class="nav-right">
+        <a href="/register">Register</a>
+        <a href="/login" class="btn">Login</a>
+    </div>
+</nav>
+
+<div class="container">
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert {{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+
+</div>
+
+</body>
+</html>
